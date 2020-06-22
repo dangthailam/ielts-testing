@@ -1,0 +1,20 @@
+:host {
+    .new-test {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+  
+      p {
+        font-size: 18px;
+        font-weight: bold;
+      }
+  
+      button {
+        font-size: 15px;
+        margin-top: 1rem;
+      }
+    }
+  }
+  
