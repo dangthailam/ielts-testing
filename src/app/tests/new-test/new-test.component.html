@@ -1,1 +1,28 @@
-<p>new-test works!</p>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <button type="button" class="button" (click)="addQuestion(QuestionType.MultipleChoice)">Multiple choice</button>
+      <button type="button" class="button" (click)="addQuestion(QuestionType.Checkbox)">Checkbox</button>
+      <button type="button" class="button" (click)="addQuestion(QuestionType.FillInBlank)">Fill in the blank</button>
+    </div>
+  </div>
+</section>
+<section class="hero">
+  <div class="hero-body">
+    <div *ngFor="let question of test.questions">
+        <div [ngSwitch]="question.type">
+            <app-multiple-choice *ngSwitchCase="QuestionType.MultipleChoice"></app-multiple-choice>
+            <app-checkbox *ngSwitchCase="QuestionType.Checkbox"></app-checkbox>
+            <app-fill-in-blank *ngSwitchCase="QuestionType.FillInBlank"></app-fill-in-blank>
+        </div>
+    </div>
+  </div>
+</section>
+<section class="section" *ngFor="">
+  <div class="container">
+    <h1 class="title">Section</h1>
+    <h2 class="subtitle">
+      A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+    </h2>
+  </div>
+</section>
