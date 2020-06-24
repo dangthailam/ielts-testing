@@ -1,20 +1,21 @@
-<section class="hero">
-  <div class="hero-body">
-    <div class="container">
-      <button type="button" class="button" (click)="addQuestion(QuestionType.MultipleChoice)">Multiple choice</button>
-      <button type="button" class="button" (click)="addQuestion(QuestionType.Checkbox)">Checkbox</button>
-      <button type="button" class="button" (click)="addQuestion(QuestionType.FillInBlank)">Fill in the blank</button>
+<div class="d-flex align-items-center justify-content-center">
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem (click)="addQuestion(QuestionType.MultipleChoice)">Multiple choice</button>
+      <button ngbDropdownItem (click)="addQuestion(QuestionType.FillInBlank)">Fill in the blank</button>
     </div>
   </div>
-</section>
+</div>
+
 <section class="hero">
   <div class="hero-body">
     <div *ngFor="let question of test.questions">
-        <div [ngSwitch]="question.type">
-            <app-multiple-choice *ngSwitchCase="QuestionType.MultipleChoice"></app-multiple-choice>
-            <app-checkbox *ngSwitchCase="QuestionType.Checkbox"></app-checkbox>
-            <app-fill-in-blank *ngSwitchCase="QuestionType.FillInBlank"></app-fill-in-blank>
-        </div>
+      <div [ngSwitch]="question.type">
+        <app-multiple-choice *ngSwitchCase="QuestionType.MultipleChoice"></app-multiple-choice>
+        <app-checkbox *ngSwitchCase="QuestionType.Checkbox"></app-checkbox>
+        <app-fill-in-blank *ngSwitchCase="QuestionType.FillInBlank"></app-fill-in-blank>
+      </div>
     </div>
   </div>
 </section>
