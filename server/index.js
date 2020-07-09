@@ -9,6 +9,8 @@ app.use(/^((?!(api)).)*/, (req, res) => {
     res.sendFile(path.join(__dirname, distDir + '/index.html'));
 });
 
-app.listen(5000, () => {
-    console.info(`server started on port 5000`);
+var port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+    console.info(`server started on port ${port}`);
 });
