@@ -10,9 +10,9 @@
 
 <section class="hero">
   <div class="hero-body">
-    <div *ngFor="let question of test.questions">
+    <div *ngFor="let question of test.questions; let i = index;">
       <div [ngSwitch]="question.type">
-        <app-multiple-choice *ngSwitchCase="QuestionType.MultipleChoice"></app-multiple-choice>
+        <app-multiple-choice *ngSwitchCase="QuestionType.MultipleChoice" [orderNumber]="i + 1"></app-multiple-choice>
         <app-checkbox *ngSwitchCase="QuestionType.Checkbox"></app-checkbox>
         <app-fill-in-blank *ngSwitchCase="QuestionType.FillInBlank"></app-fill-in-blank>
       </div>

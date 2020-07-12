@@ -5,9 +5,10 @@ export class Question {
     type: QuestionType;
     body: string;
     point: number;
-    answer: string[];
+    answers: string[];
 
     constructor(type: QuestionType) {
         this.type = type;
+        this.body = "Write your question"
     }
 }
