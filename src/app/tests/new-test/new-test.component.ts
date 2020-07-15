@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Test } from 'src/app/_shared/models/test.model';
 import { Question } from 'src/app/_shared/models/question.model';
 import { QuestionType } from 'src/app/_shared/models/questionType.enum';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-new-test',
@@ -11,6 +11,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 })
 export class NewTestComponent implements OnInit {
     faAngleDown = faAngleDown;
+    faCheckSquare = faCheckSquare;
     QuestionType = QuestionType;
     openNewButton = false;
     test: Test = new Test();

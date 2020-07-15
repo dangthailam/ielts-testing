@@ -1,8 +1,8 @@
 :host {
   display: flex;
   padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
   margin-bottom: 0.5rem;
+  border: 1px solid #fff;
 
   ::ng-deep {
     p {
@@ -14,12 +14,19 @@
     }
   }
 
-  .edit-btn {
+  .action-bar {
     visibility: hidden;
+    border-top: 1px solid #ccc;
+    padding: 10px;
   }
 
-  :hover .edit-btn {
-    visibility: visible;
+  &:hover { 
+    border: 1px dashed #ccc;
+    background: #fafafa;
+
+    .action-bar {
+      visibility: visible;
+    }
   }
 }
 
@@ -62,6 +69,22 @@ input[type=radio] {
 
     &:hover {
       background-position: -3px -28px;
+    }
+  }
+}
+
+.answer-content {
+  .delete-btn {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .delete-btn {
+      visibility: visible;
+    }
+
+    ::ng-deep ckeditor .ck-content {
+      border: 1px solid #ccc;
     }
   }
 }

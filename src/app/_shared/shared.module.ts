@@ -5,6 +5,7 @@ import { MultipleChoiceComponent } from './components/multiple-choice/multiple-c
 import { CheckboxComponent } from './components/checkbox/checkbox.component';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     imports: [
         CKEditorModule,
         CommonModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        FormsModule
     ],
     providers: [],
   })

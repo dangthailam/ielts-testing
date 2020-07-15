@@ -3,52 +3,24 @@
     <div class="col">
       <div class="row align-items-center mb-2">
         <span>{{ orderNumber }}.</span>
-        <div [innerHTML]="multipleChoice.body"></div>
+        <div class="col" [innerHTML]="multipleChoice.body"></div>
       </div>
-      <div class="row align-items-center mb-2" *ngFor="let answer of multipleChoice.answers; let i = index">
-        <input class="form-check-input" [disabled]="!onEdit" type="radio" [name]="'answer' + orderNumber"
+      <div class="row mb-2 answer-content" *ngFor="let answer of multipleChoice.answers; let i = index">
+        <input class="form-check-input" type="radio" [name]="'answer' + orderNumber"
           [id]="'opt' + i + '-' + orderNumber">
         <label [for]="'opt' + i + '-' + orderNumber" class="css-label"></label>
-        <div [innerHTML]="answer" *ngIf="!onEdit"></div>
-        <ckeditor class="col" [editor]="Editor" *ngIf="onEdit" [data]="answer"></ckeditor>
+        <ckeditor class="col" [editor]="Editor" [(ngModel)]="answer.content"></ckeditor>
+        <button class="btn btn-sm delete-btn" (click)="multipleChoice.answers.splice(i, 1)" *ngIf="i > 1">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
       </div>
     </div>
-    <div class="edit-btn">
-      <button class="btn btn-sm btn-outline-primary" (click)="editQuestion()">
-        <fa-icon [icon]="faEdit"></fa-icon>
-      </button>
-    </div>
   </div>
-  <div class="row d-flex" *ngIf="onEdit">
+  <div class="row d-flex action-bar">
     <button class="btn btn-sm btn-outline-primary"
-      (click)="multipleChoice.answers.push('Option' + (multipleChoice.answers.length + 1))">
+      (click)="addNewAnswer(multipleChoice)">
       <fa-icon [icon]="faPlus"></fa-icon>
       Add new option
-    </button>
-    <button class="btn btn-sm btn-outline-primary ml-1" (click)="approve()">
-      <fa-icon [icon]="faCheck"></fa-icon>
-      Save
-    </button>
-    <button class="btn btn-sm btn-outline-danger ml-1" (click)="cancel()">
-      <fa-icon [icon]="faBan"></fa-icon>
-      Cancel
     </button>
   </div>
 </div>
-<!-- <div class="container">
-  <div class="row align-items-center mb-2">
-    <span>{{ orderNumber }}.</span>
-    <ckeditor class="col" [editor]="Editor" data="<p>Question Body</p>"></ckeditor>
-  </div>
-  <div class="row align-items-center mb-2" *ngFor="let answer of multipleChoice.answers; let i = index">
-    <input class="form-check-input" type="radio" name="answer" [id]="'opt' + i">
-    <label [for]="'opt' + i" class="css-label"></label>
-    <ckeditor class="col" [editor]="Editor" [data]="answer"></ckeditor>
-  </div>
-  <div class="row">
-    <button class="btn btn-sm btn-outline-primary">
-      <fa-icon [icon]="faPlus"></fa-icon>
-      Add new option
-    </button>
-  </div>
-</div> -->
