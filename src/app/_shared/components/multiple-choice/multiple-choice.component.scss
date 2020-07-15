@@ -15,11 +15,11 @@
   }
 
   .edit-btn {
-    display: none;
+    visibility: hidden;
   }
 
   :hover .edit-btn {
-    display: block;
+    visibility: visible;
   }
 }
 
@@ -34,6 +34,14 @@ input[type=radio] {
   margin: -1px;
   padding: 0;
   border: 0;
+
+  &:checked+label.css-label {
+    background-position: -3px -56px;
+
+    &:hover {
+      background-position: -3px -56px !important;
+    }
+  }
 
   &+label.css-label {
     margin-top: 0;
@@ -51,5 +59,9 @@ input[type=radio] {
     padding: 5px 0;
     box-sizing: content-box;
     flex: 0 0 28px;
+
+    &:hover {
+      background-position: -3px -28px;
+    }
   }
 }

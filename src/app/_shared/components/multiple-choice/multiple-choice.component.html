@@ -6,16 +6,33 @@
         <div [innerHTML]="multipleChoice.body"></div>
       </div>
       <div class="row align-items-center mb-2" *ngFor="let answer of multipleChoice.answers; let i = index">
-        <input class="form-check-input" type="radio" name="answer" [id]="'opt' + i">
-        <label [for]="'opt' + i" class="css-label"></label>
-        <div [innerHTML]="answer"></div>
+        <input class="form-check-input" [disabled]="!onEdit" type="radio" [name]="'answer' + orderNumber"
+          [id]="'opt' + i + '-' + orderNumber">
+        <label [for]="'opt' + i + '-' + orderNumber" class="css-label"></label>
+        <div [innerHTML]="answer" *ngIf="!onEdit"></div>
+        <ckeditor class="col" [editor]="Editor" *ngIf="onEdit" [data]="answer"></ckeditor>
       </div>
     </div>
     <div class="edit-btn">
-      <button class="btn btn-sm btn-outline-primary">
+      <button class="btn btn-sm btn-outline-primary" (click)="editQuestion()">
         <fa-icon [icon]="faEdit"></fa-icon>
       </button>
     </div>
+  </div>
+  <div class="row d-flex" *ngIf="onEdit">
+    <button class="btn btn-sm btn-outline-primary"
+      (click)="multipleChoice.answers.push('Option' + (multipleChoice.answers.length + 1))">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      Add new option
+    </button>
+    <button class="btn btn-sm btn-outline-primary ml-1" (click)="approve()">
+      <fa-icon [icon]="faCheck"></fa-icon>
+      Save
+    </button>
+    <button class="btn btn-sm btn-outline-danger ml-1" (click)="cancel()">
+      <fa-icon [icon]="faBan"></fa-icon>
+      Cancel
+    </button>
   </div>
 </div>
 <!-- <div class="container">
