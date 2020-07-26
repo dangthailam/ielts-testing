@@ -1,0 +1,30 @@
+.add-question-btns {
+  .btn {
+    background-color: #F3F3F4 !important;
+    padding-left: 30px;
+    margin-left: 10px;
+
+    &.add-multiple-choice-btn {
+      background: url('../../../assets/radio_moon.png') no-repeat scroll left center rgba(0, 0, 0, 0);
+
+      &:hover {
+        background-image: url('../../../assets/hvr_radio_moon.png') !important;
+      }
+    }
+
+    &.add-fill-in-blank-btn {
+      background: url('../../../assets/fill_plain.png') no-repeat scroll left center rgba(0, 0, 0, 0);
+      background-position: 5px;
+
+      &:hover {
+        background-image: url('../../../assets/fill_hover.png') !important;
+      }
+    }
+
+    &:hover {
+      background-color: #3C8BCA !important;
+      color: #F1F1F2 !important;
+      border-radius: 5px;
+    }
+  }
+}

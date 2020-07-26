@@ -1,1 +1,26 @@
-<p>fill-in-blank works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="row align-items-center mb-2">
+          <span>{{ orderNumber }}.</span>
+          <ckeditor class="col" [editor]="Editor" [(ngModel)]="question.body"></ckeditor>
+        </div>
+        <div class="row mb-2 answer-content" *ngFor="let answer of question.answers; let i = index">
+          <input class="form-check-input" type="radio" [name]="'answer' + orderNumber"
+            [id]="'opt' + i + '-' + orderNumber">
+          <label [for]="'opt' + i + '-' + orderNumber" class="css-label"></label>
+          <ckeditor class="col" [editor]="Editor" [(ngModel)]="answer.content"></ckeditor>
+          <button class="btn btn-sm delete-btn" (click)="question.answers.splice(i, 1)" *ngIf="i > 1">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex action-bar">
+      <button class="btn btn-sm btn-outline-primary"
+        (click)="addBlankSpace()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+        Add blank space
+      </button>
+    </div>
+  </div>

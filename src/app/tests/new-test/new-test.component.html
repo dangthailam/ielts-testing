@@ -1,10 +1,13 @@
 <div class="row">
-  <div class="col-4">
-    <button class="btn btn-outline-primary" (click)="addQuestion(QuestionType.MultipleChoice)">
-      <fa-icon [icon]="faCheckSquare"></fa-icon> Multiple Choice
+  <div class="col-4 add-question-btns">
+    <button class="btn add-multiple-choice-btn" (click)="addQuestion(QuestionType.MultipleChoice)">
+      Multiple Choice
+    </button>
+    <button class="btn add-fill-in-blank-btn" (click)="addQuestion(QuestionType.FillInBlank)">
+      Fill in the blank
     </button>
   </div>
-  <div class="col-8">
+  <div class="col-8 overflow-auto h-100">
     <section class="hero">
       <div class="hero-body">
         <div *ngFor="let question of test.questions; let i = index;">
@@ -12,7 +15,7 @@
             <app-multiple-choice *ngSwitchCase="QuestionType.MultipleChoice" [orderNumber]="i + 1">
             </app-multiple-choice>
             <app-checkbox *ngSwitchCase="QuestionType.Checkbox"></app-checkbox>
-            <app-fill-in-blank *ngSwitchCase="QuestionType.FillInBlank"></app-fill-in-blank>
+            <app-fill-in-blank *ngSwitchCase="QuestionType.FillInBlank" [orderNumber]="i + 1"></app-fill-in-blank>
           </div>
         </div>
       </div>
@@ -27,33 +30,3 @@
     </section>
   </div>
 </div>
-
-<!-- <div class="d-flex align-items-center justify-content-center">
-  <div ngbDropdown class="d-inline-block">
-    <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button ngbDropdownItem (click)="addQuestion(QuestionType.MultipleChoice)">Multiple choice</button>
-      <button ngbDropdownItem (click)="addQuestion(QuestionType.FillInBlank)">Fill in the blank</button>
-    </div>
-  </div>
-</div>
-
-<section class="hero">
-  <div class="hero-body">
-    <div *ngFor="let question of test.questions; let i = index;">
-      <div [ngSwitch]="question.type">
-        <app-multiple-choice *ngSwitchCase="QuestionType.MultipleChoice" [orderNumber]="i + 1"></app-multiple-choice>
-        <app-checkbox *ngSwitchCase="QuestionType.Checkbox"></app-checkbox>
-        <app-fill-in-blank *ngSwitchCase="QuestionType.FillInBlank"></app-fill-in-blank>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section" *ngFor="">
-  <div class="container">
-    <h1 class="title">Section</h1>
-    <h2 class="subtitle">
-      A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-    </h2>
-  </div>
-</section> -->
